@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KECIL APP</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" include-html="/pages/frame/topNav.html">
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar" include-html="/pages/frame/sideBar.html">
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">User Settings</h4>
+                                <form class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">First Name</label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name"
+                                            placeholder="First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Last Name</label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name"
+                                            placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Email address</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Email">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Password Settings</h4>
+                                <form class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Current Password</label>
+                                        <input type="password" class="form-control" id="cur_pw" name="cur_pw"
+                                            placeholder="Current Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">New Password</label>
+                                        <input type="password" class="form-control" id="new_pw" name="new_pw"
+                                            placeholder="New Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer" include-html="/pages/frame/footer.html">
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+
+
+    <script src="js/includeHtml.js"></script>
+</body>
+
+</html>

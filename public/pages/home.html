@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KECIL APP</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" include-html="/pages/frame/topNav.html">
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar" include-html="/pages/frame/sideBar.html">
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Add new short link</h4>
+                                    <p class="card-description">
+                                        From Source to Target
+                                    </p>
+                                    <form class="form-inline">
+                                        <div class="input-group col-1">
+                                            <button type="button" class="btn btn-warning btn-rounded btn-icon">
+                                                <i class="ti-bolt"></i>
+                                            </button>
+                                        </div>
+                                        <div class="input-group col-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">https://link.kecil.com/</span>
+                                            </div>
+                                            <input type="text" name="source_id" class="form-control"
+                                                placeholder="Source ID" aria-label="Source ID">
+                                        </div>
+                                        <div class="input-group col-5">
+                                            <input type="url" name="target_url" class="form-control"
+                                                placeholder="Target URL" aria-label="Target URL">
+                                        </div>
+                                        <div class="input-group col-2">
+                                            <button type="submit" class="btn btn-primary mb-2">Shorten it!</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">All my links</h4>
+                                    <p class="card-description">
+                                        In here you can view all your created links
+                                    </p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Shareable link</th>
+                                                    <th>Target Link</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="link.kecil.com/yyyyyy">
+                                                            link.kecil.com/yyyyyy
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://hi.nicholasbudiharsa.xyz">
+                                                            https://hi.nicholasbudiharsa.xyz
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <label class="badge badge-danger">Delete</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="link.kecil.com/yyyyyy">
+                                                            link.kecil.com/yyyyyy
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://hi.nicholasbudiharsa.xyz">
+                                                            https://hi.nicholasbudiharsa.xyz
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <label class="badge badge-danger">Delete</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="link.kecil.com/yyyyyy">
+                                                            link.kecil.com/yyyyyy
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://hi.nicholasbudiharsa.xyz">
+                                                            https://hi.nicholasbudiharsa.xyz
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <label class="badge badge-danger">Delete</label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer" include-html="/pages/frame/footer.html">
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+
+
+    <script src="js/includeHtml.js"></script>
+</body>
+
+</html>
