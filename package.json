@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Nicholas-t/KECIL/issues"
   },
-  "homepage": "https://github.com/Nicholas-t/KECIL#readme"
+  "homepage": "https://github.com/Nicholas-t/KECIL#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mysql": "^2.18.1"
+  }
 }
