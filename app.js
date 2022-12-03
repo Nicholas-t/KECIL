@@ -43,6 +43,30 @@ app.use(urlencodedParser)
 app.use(express.urlencoded({ extended: false }))
 
 
+app.use('/api', require("./router/api"))
+
+app.use('/', (req, res, next) => {
+    if (req.path.split("/").length == 2
+        && ![
+            "login", "register", "setting", "error", "logout"
+        ].includes(req.path.split("/")[1])) {
+        let source_id = req.path.split("/")[1]
+        if (source_id !== "") {
+            db.getXbyY("link", "source_id", source_id, (err, result) => {
+                if (result.length != 0) {
+                    res.redirect(result[0].target_url)
+                } else {
+                    next()
+                }
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+})
+
 app.get('/', function (req, res) {
     res.render(__dirname + '/public/pages/home.html')
 })
