@@ -36,7 +36,7 @@ router.post("/link/add", (req, res) => {
     db.getXbyY("link", "source_id", req.body.source_id, (err, result) => {
         if (result.length == 0) {
             let linkToAdd = req.body
-            linkToAdd.owner_id = req.user.id
+            linkToAdd.owner_id = 99999999
             linkToAdd.created_at = getCurrentTime()
             db.add("link", linkToAdd, (err, result) => {
                 if (err) {
