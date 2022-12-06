@@ -18,6 +18,7 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="/css/template.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
 </head>
@@ -45,7 +46,7 @@
                                     <form class="form-inline" action="/api/link/add" method="POST">
                                         <div class="input-group col-1">
                                             <button onclick="askForNewLink()" type="button"
-                                                class="btn btn-warning btn-rounded btn-icon">
+                                                class="btn btn-primary btn-rounded btn-icon">
                                                 <i class="ti-bolt"></i>
                                             </button>
                                         </div>
@@ -123,7 +124,6 @@
             fetch("/api/free-link").then((res) => {
                 return res.json()
             }).then((res) => {
-                console.log(res)
                 if (res.inDb) {
                     askForNewLink()
                 } else {
