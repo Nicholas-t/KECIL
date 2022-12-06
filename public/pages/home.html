@@ -54,11 +54,11 @@
                                                 <span class="input-group-text">https://link.kecil.com/</span>
                                             </div>
                                             <input type="text" name="source_id" class="form-control"
-                                                placeholder="Source ID" aria-label="Source ID">
+                                                placeholder="Source ID" aria-label="Source ID" required>
                                         </div>
                                         <div class="input-group col-5">
                                             <input type="url" name="target_url" class="form-control"
-                                                placeholder="Target URL" aria-label="Target URL">
+                                                placeholder="Target URL" aria-label="Target URL" required>
                                         </div>
                                         <div class="input-group col-2">
                                             <button type="submit" class="btn btn-primary mb-2">Shorten it!</button>
@@ -86,55 +86,7 @@
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="link.kecil.com/yyyyyy">
-                                                            link.kecil.com/yyyyyy
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://hi.nicholasbudiharsa.xyz">
-                                                            https://hi.nicholasbudiharsa.xyz
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-danger">Delete</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="link.kecil.com/yyyyyy">
-                                                            link.kecil.com/yyyyyy
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://hi.nicholasbudiharsa.xyz">
-                                                            https://hi.nicholasbudiharsa.xyz
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-danger">Delete</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="link.kecil.com/yyyyyy">
-                                                            link.kecil.com/yyyyyy
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://hi.nicholasbudiharsa.xyz">
-                                                            https://hi.nicholasbudiharsa.xyz
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <label class="badge badge-danger">Delete</label>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="all_links">
                                             </tbody>
                                         </table>
                                     </div>
@@ -178,6 +130,40 @@
                     document.querySelector("input[name=source_id]").value = res.uniqueId
                 }
             })
+        }
+    </script>
+    <script>
+        const userId = "<%=userId%>"
+        fetch("/api/user/links").then((res) => {
+            return res.json()
+        }).then((res) => {
+            res.result.forEach(element => {
+                document.querySelector("#all_links").innerHTML += `
+                <tr>
+                    <td>${element.id}</td>
+                    <td>
+                        <a target="__blank" href="/${element.source_id}">
+                            link.kecil.com/${element.source_id}
+                        </a>
+                    </td>
+                    <td>
+                        <a target="__blank" href="${element.target_url}">
+                            ${element.target_url.length > 40 ? element.target_url.slice(0, 35) + "..." : element.target_url}
+                        </a>
+                    </td>
+                    <td>
+                        <label onclick="deleteLink('${element.id}')" class="badge badge-danger">Delete</label>
+                    </td>
+                    <form id="delete-link-${element.id}" action="/api/link/delete/${element.id}" method="POST" style="display:none;">
+                    </form>
+                </tr>
+                `
+            });
+        })
+    </script>
+    <script>
+        function deleteLink(linkId) {
+            document.querySelector(`#delete-link-${linkId}`).submit()
         }
     </script>
 

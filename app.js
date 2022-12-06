@@ -17,6 +17,8 @@ db.start(sqlConf, () => {
 
 
 var express = require('express');
+const session = require('express-session');
+const passport = require('passport');
 var bodyParser = require('body-parser');
 
 var app = express()
@@ -42,8 +44,23 @@ app.engine('html', require('ejs').renderFile);
 app.use(urlencodedParser)
 app.use(express.urlencoded({ extended: false }))
 
+// FOR SESSION
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET
+            ? process.env.SESSION_SECRET
+            : "secret",
+        resave: false,
+        saveUninitialized: false,
+        cookie: { expires: new Date(253402300000000) }
+    })
+)
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 app.use('/api', require("./router/api"))
+app.use('/auth', require("./router/auth"))
 
 app.use('/', (req, res, next) => {
     if (req.path.split("/").length == 2
@@ -68,11 +85,22 @@ app.use('/', (req, res, next) => {
 })
 
 app.get('/', function (req, res) {
-    res.render(__dirname + '/public/pages/home.html')
+    if (!req.user) {
+        res.redirect("/login")
+    } else {
+        let userId = req.user[0].id
+        res.render(__dirname + '/public/pages/home.html', {
+            userId
+        })
+    }
 })
 
 app.get('/login', function (req, res) {
-    res.render(__dirname + '/public/pages/auth/login.html')
+    if (req.user) {
+        res.redirect("/")
+    } else {
+        res.render(__dirname + '/public/pages/auth/login.html')
+    }
 })
 
 app.get('/forgot-password', function (req, res) {
@@ -80,11 +108,21 @@ app.get('/forgot-password', function (req, res) {
 })
 
 app.get('/register', function (req, res) {
-    res.render(__dirname + '/public/pages/auth/register.html')
+    if (req.user) {
+        res.redirect("/")
+    } else {
+        res.render(__dirname + '/public/pages/auth/register.html')
+    }
 })
 
 app.get('/setting', function (req, res) {
-    res.render(__dirname + '/public/pages/setting.html')
+    if (!req.user) {
+        res.redirect("/login")
+    } else {
+        res.render(__dirname + '/public/pages/setting.html', {
+            ...req.user[0]
+        })
+    }
 })
 
 app.get('/error', function (req, res) {
@@ -92,7 +130,10 @@ app.get('/error', function (req, res) {
 })
 
 app.get('/logout', function (req, res) {
-    res.redirect("/login")
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/login');
+    });
 })
 
 const server = app.listen(7000, () => {
