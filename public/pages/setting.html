@@ -38,21 +38,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">User Settings</h4>
-                                <form class="forms-sample">
+                                <form class="forms-sample" action="/auth/modify" method="POST">
                                     <div class="form-group">
                                         <label for="exampleInputName1">First Name</label>
-                                        <input type="text" class="form-control" id="first_name" name="first_name"
-                                            placeholder="First Name">
+                                        <input type="text" value="<%=first_name%>" class="form-control" id="first_name"
+                                            name="first_name" placeholder="First Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">Last Name</label>
-                                        <input type="text" class="form-control" id="last_name" name="last_name"
-                                            placeholder="Last Name">
+                                        <input type="text" value="<%=last_name%>" class="form-control" id="last_name"
+                                            name="last_name" placeholder="Last Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Email address</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email">
+                                        <input type="email" value="<%=email%>" class="form-control" id="email"
+                                            name="email" placeholder="Email" disabled>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 </form>
@@ -64,7 +64,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Password Settings</h4>
-                                <form class="forms-sample">
+                                <form class="forms-sample" action="/auth/reset-password" method="POST">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Current Password</label>
                                         <input type="password" class="form-control" id="cur_pw" name="cur_pw"

@@ -23,7 +23,7 @@ var express = require('express');
 var router = express.Router()
 
 router.get("/user/links", (req, res) => {
-    db.getXbyY("link", "owner_id", req.user.id, (err, result) => {
+    db.getXbyY("link", "owner_id", req.user[0].id, (err, result) => {
         res.json({
             error: err,
             result
@@ -36,7 +36,7 @@ router.post("/link/add", (req, res) => {
     db.getXbyY("link", "source_id", req.body.source_id, (err, result) => {
         if (result.length == 0) {
             let linkToAdd = req.body
-            linkToAdd.owner_id = 99999999
+            linkToAdd.owner_id = req.user[0].id
             linkToAdd.created_at = getCurrentTime()
             db.add("link", linkToAdd, (err, result) => {
                 if (err) {
@@ -54,8 +54,8 @@ router.post("/link/add", (req, res) => {
 router.post("/link/delete/:link_id", (req, res) => {
     db.getXbyY("link", "id", req.params.link_id, (err, result) => {
         if (result.length == 1) {
-            if (req.user.id == result[0].owner_id) {
-                db.remove("link", "id", req.params.link_id, (err, res) => {
+            if (req.user[0].id == result[0].owner_id) {
+                db.remove("link", "id", req.params.link_id, (err, result) => {
                     if (err) {
                         res.redirect("/error")
                     } else {

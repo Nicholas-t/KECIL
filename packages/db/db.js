@@ -174,6 +174,21 @@ class databaseHandler {
     }
 
 
+    /**
+    * getUserById - get user by id
+    * @param {id} id 
+    * @param {function} cb 
+    */
+    getUserById(id, cb) {
+        let query = `SELECT user.*, pw.hashed_password 
+        FROM user 
+        LEFT JOIN pw
+        ON  user.id = pw.user_id
+        WHERE user.id='${id}'`
+        this.con.query(query, cb);
+    }
+
+
     //HELPER FUNCTION
     /**
     * _formatObjectToAddQuery - formatting object to become an add SQL Query
